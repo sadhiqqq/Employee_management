@@ -1,0 +1,173 @@
+<mvc:View
+    controllerName="empproj.controller.ViewRecord"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <Toolbar>
+        <Button
+            icon="sap-icon://nav-back"
+            text="Back"
+            press=".onNavBack"
+        />
+        <ToolbarSpacer />
+    </Toolbar>
+
+    <f:SimpleForm
+        id="simpleForm"
+        layout="ResponsiveGridLayout"
+        editable="true"
+        labelSpanL="12"
+        labelSpanM="12"
+        emptySpanL="0"
+        emptySpanM="0"
+        columnsL="1"
+        columnsM="1"
+        width="50%"
+        class='form'
+    >
+        <Toolbar>
+            <HBox
+                justifyContent="SpaceBetween"
+                alignItems="Center"
+                width="100%"
+            >
+                <HBox>
+                    <Text
+                        text='Information'
+                        class='text-style'
+                    />
+                </HBox>
+                <HBox
+                    justifyContent="Center"
+                    alignItems="Center"
+                >
+                    <Label text="Enable Edit" />
+                    <Switch
+                        id="switchOnOff"
+                        customTextOn=" "
+                        customTextOff=" "
+                        change=".onSwitchOnOffToggle"
+                        state="false"
+                    />
+                </HBox>
+            </HBox>
+        </Toolbar>
+
+        <!-- Image Section -->
+        <HBox
+            justifyContent="Center"
+            alignItems="Center"
+        >
+            <Image
+                id="ViewImage"
+                visible="true"
+                width="100px"
+                height="100px"
+                class="circularImage"
+                alt="Image Preview"
+                src="{employees>IMAGE}"
+            />
+        </HBox>
+
+        <!-- Form Fields -->
+        <Label text="ID" />
+        <Input
+            id="emp_Id"
+            placeholder="Enter your ID"
+            type="Text"
+            enabled="false"
+            value="{employees>ID}"
+        />
+
+        <Label text="Name" />
+        <Input
+            id="emp_Name"
+            placeholder="Enter your name"
+            enabled="false"
+            value="{employees>NAME}"
+        />
+
+        <Label text="Gender" />
+        <Select
+            id="emp_Gender"
+            width="100%"
+            enabled="false"
+            selectedKey="{employees>GENDER}"
+        >
+            <core:Item
+                key=""
+                text="Select Gender"
+            />
+            <core:Item
+                key="Male"
+                text="Male"
+            />
+            <core:Item
+                key="Female"
+                text="Female"
+            />
+        </Select>
+
+        <Label text="Role" />
+        <Select
+            id="emp_Role"
+            width="100%"
+            enabled="false"
+            selectedKey="{employees>ROLE}"
+        >
+            <core:Item
+                key=""
+                text="Select Role"
+            />
+            <core:Item
+                key="Developer"
+                text="Developer"
+            />
+            <core:Item
+                key="Business Consultant"
+                text="Business Consultant"
+            />
+            <core:Item
+                key="Project Manager"
+                text="Project Manager"
+            />
+        </Select>
+
+        <Label text="Date of Birth" />
+        <DatePicker
+            placeholder="Select Date of Birth"
+            enabled="false"
+            id='emp_DOB'
+            value="{employees>DOB}"
+        />
+
+        <Label text="Date of Joining" />
+        <DatePicker
+            placeholder="Select Date of Joining"
+            id='emp_DOJ'
+            enabled="false"
+            value="{employees>DateOfJoining}"
+        />
+
+        <HBox
+            justifyContent="Center"
+            alignItems="Center"
+            width="100%"
+        >
+            <Button
+                id='updateView'
+                text='Update'
+                press='onUpdate'
+                class='sapUiResponsiveMargin'
+            />
+            <Button
+                text='Cancel'
+                press='cancelInfo'
+                class='sapUiResponsiveMargin'
+            />
+        </HBox>
+    </f:SimpleForm>
+</mvc:View>

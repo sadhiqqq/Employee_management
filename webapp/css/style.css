@@ -1,0 +1,30 @@
+.vbox-items {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.centered-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background: linear-gradient(90deg, rgba(243,255,255,1) 0%, rgba(133,237,213,1) 49%, rgba(0,212,255,1) 100%);
+}
+
+.form{
+    margin: 20px auto auto auto;
+}
+
+.text-style{
+    font-weight: bold;
+    font-size: large;
+}
+
+.circularImage {
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+

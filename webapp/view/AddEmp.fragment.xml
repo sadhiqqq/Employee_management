@@ -1,0 +1,138 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core='sap.ui.core'
+    xmlns:u="sap.ui.unified"
+>
+    <Dialog
+        title="Add Employee"
+        class="sapUiResponsivePadding"
+        id='addEmpDialog'
+        contentWidth="600px"
+        contentHeight='480px'
+    >
+        <VBox
+            id='vbox-items'
+            class='vbox-items'
+        >
+            <HBox justifyContent="Center" alignItems="Center">
+                <Image
+                    id="empImage"
+                    visible="true"
+                    width="100px"
+                    height="100px"
+                    class="circularImage"
+                    alt="Image Preview"
+                />
+            </HBox>
+            <u:FileUploader
+                id="fileUploader"
+                name="employeeImageUpload"
+                width="100%"
+                placeholder="Add Image"
+                tooltip="Upload Employee Image"
+                change=".onFileChange"
+                buttonText="Browse"
+            />
+            <Input
+                id="empId"
+                type="Number"
+                placeholder="Enter Emp Id"
+            />
+            <Input
+                id="empName"
+                type="Text"
+                placeholder="Enter Employee Name"
+            />
+            <Select
+                id="empGender"
+                width="100%"
+            >
+                <core:Item
+                    key=""
+                    text="Select Gender"
+                />
+                <core:Item
+                    key="Male"
+                    text="Male"
+                />
+                <core:Item
+                    key="Female"
+                    text="Female"
+                />
+            </Select>
+            <Select
+                id="empRole"
+                width="100%"
+            >
+                <core:Item
+                    key=""
+                    text="Select Role"
+                />
+                <core:Item
+                    key="Developer"
+                    text="Developer"
+                />
+                <core:Item
+                    key="SAP Consultant"
+                    text="SAP Consultant"
+                />
+                <core:Item
+                    key="Java Developer"
+                    text="Java Developer"
+                />
+                <core:Item
+                    key="React Developer"
+                    text="React Developer"
+                />
+                <core:Item
+                    key="Business Analyst"
+                    text="Business Analyst"
+                />
+                <core:Item
+                    key="UX Designer"
+                    text="UX Designer"
+                />
+                <core:Item
+                    key="Full Stack Developer"
+                    text="Full Stack Developer"
+                />
+                <core:Item
+                    key="Junior Developer"
+                    text="Junior Developer"
+                />
+                <core:Item
+                    key="System Administrator"
+                    text="System Administrator"
+                />
+                <core:Item
+                    key="UI Developer"
+                    text="UI Developer"
+                />
+                <core:Item
+                    key="C# Developer"
+                    text="C# Developer"
+                />
+            </Select>
+            <DatePicker
+                placeholder="Select Date of Birth"
+                id="empDOB"
+            />
+            <DatePicker
+                placeholder="Select Date of Joining"
+                id="empDOJ"
+            />
+        </VBox>
+        <endButton>
+            <Button
+                text="Cancel"
+                press=".onCloseDialog"
+            />
+        </endButton>
+        <beginButton>
+            <Button
+                text="Add"
+                press=".onSubmit"
+            />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

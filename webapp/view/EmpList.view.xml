@@ -1,0 +1,216 @@
+<mvc:View
+    controllerName='empproj.controller.EmpList'
+    xmlns='sap.m'
+    xmlns:mvc='sap.ui.core.mvc'
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+>
+    <Panel
+        class='sapUiResponsiveMargin'
+        width='95%'
+        height="100%"
+        id='Heading'
+    >
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>Heading}" />
+                <OverflowToolbar>
+                    <SearchField
+                        liveChange=".onSearch"
+                        width="100%"
+                    />
+                </OverflowToolbar>
+                <ToolbarSpacer />
+                <!-- <Button
+                    text='OData'
+                    press=".onListItemPressed('', 1)"
+                /> -->
+                <Button
+                    text='OData'
+                    press=".OnGetOData"
+                />
+                <Select
+                    id="filterEmp"
+                    width="10%"
+                    change="onRoleSelectChange"
+                >
+                    <core:Item text="Filter" />
+                    <core:Item text="Male" />
+                    <core:Item text="Female" />
+                    <core:Item text="Recently Joined" />
+                    <core:Item text="Date Joined" />
+                    <core:Item text="ID's Low" />
+                    <core:Item text="ID's High" />
+                </Select>
+                <Button
+                    text="Add Employee"
+                    press="onAddEmployee"
+                    class='sapMBtnContent'
+                />
+                <Button
+                    text="Delete Employee"
+                    press="onDeleteEmployee"
+                    class='sapMBtnContent'
+                    ariaHasPopup="Dialog"
+                />
+            </Toolbar>
+        </headerToolbar>
+        <VBox>
+            <Table
+                id="employeeTable"
+                items='{employees>/Employees}'
+            >
+                <columns>
+                    <Column width="8%">
+                        <CheckBox
+                            selected="false"
+                            valueState="Information"
+                            id="selectAllEmp"
+                            select=".onSelectAllEmp"
+                        />
+                    </Column>
+                    <Column>
+                        <Text text="Employee ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Name" />
+                    </Column>
+                    <Column>
+                        <Text text="Photo" />
+                    </Column>
+                    <Column>
+                        <Text text="Gender" />
+                    </Column>
+                    <Column>
+                        <Text text="Role" />
+                    </Column>
+                    <Column>
+                        <Text text="Date of Birth" />
+                    </Column>
+                    <Column>
+                        <Text text="Date of Joining" />
+                    </Column>
+                    <Column>
+                        <Text text="View Info" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem
+                        id="employeeList"
+                        type="Navigation"
+                        press=".onListItemPressed"
+                    >
+                        <cells>
+                            <CheckBox
+                                selected="{employees>isSelected}"
+                                id="selectEmp"
+                                select=".onSelectEmp"
+                            />
+                            <Text text="{employees>ID}" />
+                            <Text text="{employees>NAME}" />
+                            <Image
+                                id="empImg"
+                                visible="true"
+                                width="50px"
+                                height="50px"
+                                class="circularImage"
+                                alt="Image Preview"
+                                src="{employees>IMAGE}"
+                            />
+                            <!-- <Text text="{employees>GENDER}" /> -->
+                            <Select
+                                id="genderCategorySelect"
+                                selectedKey="{employees>GENDER}"
+                                change=".onGenderChange"
+                            >
+                                <core:Item
+                                    key="Male"
+                                    text="Male"
+                                />
+                                <core:Item
+                                    key="Female"
+                                    text="Female"
+                                />
+                            </Select>
+                            <Text text="{employees>ROLE}" />
+                            <Text text="{employees>DOB}" />
+                            <Text text="{employees>DateOfJoining}" />
+                            <Button
+                                text="view"
+                                press=".onViewInfo"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <HBox
+                justifyContent="Center"
+                alignItems="Center"
+            >
+                <Button
+                    text='Previous'
+                    press="onPreviousPage"
+                />
+                <Button
+                    text='Next'
+                    press="onNextPage"
+                />
+            </HBox>
+            <HBox
+                justifyContent="Center"
+                alignItems="Center"
+                id="paginationDropdown"
+            />
+
+            <HBox
+                justifyContent="Center"
+                alignItems="Center"
+                id="paginationButtons"
+            />
+
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <HBox
+                    justifyContent="Center"
+                    alignItems="Center"
+                    id="paginationDropdown1"
+                />
+                <Button
+                    id="BtnFirstPressId"
+                    icon="sap-icon://close-command-field"
+                    press="onFirstPress"
+                    tooltip="First"
+                    enabled="{NavModel>/firstPageBtnEnable}"
+                />
+                <Button
+                    id="BtnPreviousPressId"
+                    icon="sap-icon://navigation-left-arrow"
+                    press="onPreviousPress"
+                    tooltip="Previous"
+                    enabled="{NavModel>/firstPageBtnEnable}"
+                />
+                <Text
+                    id="PageTextId"
+                    text="{i18n>page} {NavModel>/page} {i18n>of} {NavModel>/totalPages}"
+                />
+                <Button
+                    id="BtnNextPressId"
+                    icon="sap-icon://navigation-right-arrow"
+                    press="onNextPress"
+                    tooltip="Next"
+                    enabled="{NavModel>/nextPageBtnEnable}"
+                />
+                <Button
+                    id="BtnLastPressId"
+                    icon="sap-icon://open-command-field"
+                    press="onLastPress"
+                    tooltip="Last"
+                    enabled="{NavModel>/nextPageBtnEnable}"
+                />
+            </OverflowToolbar>
+        </VBox>
+    </Panel>
+</mvc:View>

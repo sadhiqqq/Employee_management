@@ -1,0 +1,29 @@
+<mvc:View
+    controllerName="empproj.controller.OData"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+     <headerContent>
+            <Button
+                text="Create"
+                icon="sap-icon://add"
+                press="onCreatePress"
+            />
+        </headerContent>
+        <List
+            id="ODataList"
+            items="{path: 'connectModel>/Employees'}"
+            mode="SingleSelectMaster"
+            selectionChange="onEmployeeSelect"
+        >
+            <StandardListItem
+                title="{connectModel>FirstName} {connectModel>LastName}"
+            />
+        </List>
+    </Page>
+</mvc:View>
